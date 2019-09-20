@@ -8,7 +8,15 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 def welcome():
 	data = {
-		'success': 'welcome please follow the documentation spec',
+		'info': 'welcome please follow the app documentation to proceed',
+		'status': 201
+	}
+	return jsonify(data)
+
+@app.route('/api', methods=['GET'])
+def api_route():
+	data = {
+		'info': 'you are close, add a version to proceed',
 		'status': 201
 	}
 	return jsonify(data)
