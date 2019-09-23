@@ -26,7 +26,7 @@ def api_route():
 
 # Handling of route errors
 @app.errorhandler(400)
-def not_found(error):
+def bad_request(error):
     """
     Gives error message when any bad requests are made.
     Args:
@@ -35,7 +35,7 @@ def not_found(error):
         Error message.
     """
     print (error)
-    return jsonify({'error': 'Bad request','status':400}), 400
+    return jsonify({'error': '{}!'.format(error),'status':400}), 400
 
 @app.errorhandler(404)
 def not_found(error):
@@ -47,7 +47,19 @@ def not_found(error):
         Error message.
     """
     print (error)
-    return jsonify({'error': 'resource found','status':404}), 404
+    return jsonify({'error': '{}!'.format(error),'status':404}), 404
+
+@app.errorhandler(403)
+def not_allowed(error):
+    """
+    Gives error message when a resource is restricted from the user access.
+    Args:
+        error (string): 
+    Returns:
+        Error message.
+    """
+    print (error)
+    return jsonify({'error': '{}!'.format(error),'status':403}), 403
 
 # register a blueprint for the version
 # with the API standard
