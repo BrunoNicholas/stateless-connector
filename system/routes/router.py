@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, abort
 
 
 JSON_MIME_TYPE = 'application/json'
@@ -60,4 +60,5 @@ def form_add():
 def input_data():
 	if request.method == 'POST':
 		data = request.get_json()
+	abort(403)
 
