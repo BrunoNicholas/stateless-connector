@@ -23,6 +23,32 @@ def api_route():
 	}
 	return jsonify(data), 206
 
+
+# Handling of route errors
+@app.errorhandler(400)
+def not_found(error):
+    """
+    Gives error message when any bad requests are made.
+    Args:
+        error (string):
+    Returns:
+        Error message.
+    """
+    print (error)
+    return jsonify({'error': 'Bad request','status':400}), 400
+
+@app.errorhandler(404)
+def not_found(error):
+    """
+    Gives error message when any invalid url are requested.
+    Args:
+        error (string): 
+    Returns:
+        Error message.
+    """
+    print (error)
+    return jsonify({'error': 'resource found','status':404}), 404
+
 # register a blueprint for the version
 # with the API standard
 app.register_blueprint(sys_app, url_prefix="/api/v1")
