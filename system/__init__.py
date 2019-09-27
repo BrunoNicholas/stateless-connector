@@ -14,7 +14,8 @@ def welcome():
 	}
 	return jsonify(data), 206
 
-@app.route('/api', methods=['GET'])
+
+@app.route('/api',  methods=['GET'])
 @app.route('/api/', methods=['GET'])
 def api_route():
 	data = {
@@ -37,6 +38,7 @@ def bad_request(error):
     print (error)
     return jsonify({'error': '{}!'.format(error),'status':400}), 400
 
+
 @app.errorhandler(404)
 def not_found(error):
     """
@@ -49,6 +51,7 @@ def not_found(error):
     print (error)
     return jsonify({'error': '{}!'.format(error),'status':404}), 404
 
+
 @app.errorhandler(403)
 def not_allowed(error):
     """
@@ -60,6 +63,7 @@ def not_allowed(error):
     """
     print (error)
     return jsonify({'error': '{}!'.format(error),'status':403}), 403
+
 
 # register a blueprint for the version
 # with the API standard
